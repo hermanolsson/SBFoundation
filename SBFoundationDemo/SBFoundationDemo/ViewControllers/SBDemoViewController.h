@@ -1,5 +1,5 @@
 //
-//  SBAppDelegate.h
+//  SBDemoViewController.h
 //  SBFoundationDemo
 //
 //  Created by Simon Blommegård on 2012-03-24.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SBAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) IBOutlet UIWindow *window;
+@interface SBDemoViewController : UIViewController
 
 @end

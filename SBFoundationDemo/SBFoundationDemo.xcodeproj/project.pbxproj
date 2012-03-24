@@ -14,6 +14,8 @@
 		F41CFC54151E358A00B29FCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC53151E358A00B29FCE /* main.m */; };
 		F41CFC58151E358A00B29FCE /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC57151E358A00B29FCE /* SBAppDelegate.m */; };
 		F41CFC72151E364900B29FCE /* SBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41CFC71151E364900B29FCE /* SBFoundation.framework */; };
+		F41CFC76151E3C2200B29FCE /* SBMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41CFC75151E3C2200B29FCE /* SBMain.xib */; };
+		F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,9 @@
 		F41CFC56151E358A00B29FCE /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
 		F41CFC57151E358A00B29FCE /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
 		F41CFC71151E364900B29FCE /* SBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SBFoundation.framework; path = "../../../Library/Developer/Xcode/DerivedData/SBFoundation-bdxmzqzuloilgfhesfxwsvxbstkg/Build/Products/Debug-iphoneos/SBFoundation.framework"; sourceTree = "<group>"; };
+		F41CFC75151E3C2200B29FCE /* SBMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBMain.xib; sourceTree = "<group>"; };
+		F41CFC7A151E3D0700B29FCE /* SBDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDemoViewController.h; sourceTree = "<group>"; };
+		F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +81,12 @@
 		F41CFC4D151E358A00B29FCE /* SBFoundationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F41CFC75151E3C2200B29FCE /* SBMain.xib */,
 				F41CFC56151E358A00B29FCE /* SBAppDelegate.h */,
 				F41CFC57151E358A00B29FCE /* SBAppDelegate.m */,
 				F41CFC4E151E358A00B29FCE /* Supporting Files */,
+				F41CFC79151E3CDD00B29FCE /* ViewControllers */,
+				F41CFC7D151E3D8700B29FCE /* Views */,
 			);
 			path = SBFoundationDemo;
 			sourceTree = "<group>";
@@ -92,6 +100,22 @@
 				F41CFC55151E358A00B29FCE /* SBFoundationDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F41CFC79151E3CDD00B29FCE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F41CFC7A151E3D0700B29FCE /* SBDemoViewController.h */,
+				F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F41CFC7D151E3D8700B29FCE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +146,7 @@
 			attributes = {
 				CLASSPREFIX = SB;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Simon Blommegård";
 			};
 			buildConfigurationList = F41CFC3D151E358A00B29FCE /* Build configuration list for PBXProject "SBFoundationDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -146,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41CFC52151E358A00B29FCE /* InfoPlist.strings in Resources */,
+				F41CFC76151E3C2200B29FCE /* SBMain.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +184,7 @@
 			files = (
 				F41CFC54151E358A00B29FCE /* main.m in Sources */,
 				F41CFC58151E358A00B29FCE /* SBAppDelegate.m in Sources */,
+				F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
