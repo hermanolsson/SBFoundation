@@ -20,7 +20,7 @@ extern CGRect CGRectMovePoint(CGRect rect, CGPoint delta);
 extern CGRect CGRectContract(CGRect rect, CGFloat dx, CGFloat dy);
 extern CGRect CGRectShift(CGRect rect, CGFloat dx, CGFloat dy);
 
-// Rememver to release
+// Remember to release
 extern CGGradientRef SBCreateGradientWithColors(NSArray *colors);
 extern CGGradientRef SBCreateGradientWithColorsAndLocations(NSArray *colors, NSArray *locations, CGColorSpaceRef colorSpace);
 
