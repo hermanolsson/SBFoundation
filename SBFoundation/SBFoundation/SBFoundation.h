@@ -8,7 +8,7 @@
 // Global Macros
 
 #define SBRadiansToDregrees(RADIANS) ((RADIANS) * (180.0 / M_PI))
-#define SBDegreesToRaians(DEGREES) ((DEGREES) / 180.0 * M_PI)
+#define SBDegreesToRadians(DEGREES) ((DEGREES) / 180.0 * M_PI)
 
 #define SBReturnStatic(THING) \
 static id thing = nil; \
@@ -26,6 +26,7 @@ return thing
 #import <SBFoundation/Categories/NSObject+SBExtras.h>
 #import <SBFoundation/Categories/UITableView+SBExtras.h>
 #import <SBFoundation/Categories/UIView+SBExtras.h>
+#import <SBFoundation/Categories/NSString+SBExtras.h>
 
 // Helpers
 #import <SBFoundation/Helpers/SBLog.h>

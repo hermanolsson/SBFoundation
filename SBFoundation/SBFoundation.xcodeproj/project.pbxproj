@@ -23,6 +23,8 @@
 		F41CFCA1151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC9F151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m */; };
 		F41CFCB7151E81CC00B29FCE /* MAKVONotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = F41CFCB5151E81CC00B29FCE /* MAKVONotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F41CFCB8151E81CC00B29FCE /* MAKVONotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFCB6151E81CC00B29FCE /* MAKVONotificationCenter.m */; };
+		F4482FF71520FA76002549BB /* NSString+SBExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = F4482FF51520FA76002549BB /* NSString+SBExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4482FF81520FA76002549BB /* NSString+SBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = F4482FF61520FA76002549BB /* NSString+SBExtras.m */; };
 		F4821951151E3379003C7687 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4821950151E3379003C7687 /* Foundation.framework */; };
 		F4821957151E3379003C7687 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4821955151E3379003C7687 /* InfoPlist.strings */; };
 		F4821964151E3478003C7687 /* SBFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = F482195E151E3391003C7687 /* SBFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +47,8 @@
 		F41CFC9F151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetworkActivityIndicatorQueue.m; sourceTree = "<group>"; };
 		F41CFCB5151E81CC00B29FCE /* MAKVONotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAKVONotificationCenter.h; sourceTree = "<group>"; };
 		F41CFCB6151E81CC00B29FCE /* MAKVONotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAKVONotificationCenter.m; sourceTree = "<group>"; };
+		F4482FF51520FA76002549BB /* NSString+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBExtras.h"; sourceTree = "<group>"; };
+		F4482FF61520FA76002549BB /* NSString+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBExtras.m"; sourceTree = "<group>"; };
 		F482194D151E3379003C7687 /* SBFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = SBFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4821950151E3379003C7687 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4821954151E3379003C7687 /* SBFoundation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SBFoundation-Info.plist"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		F482195F151E33A2003C7687 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				F4482FF51520FA76002549BB /* NSString+SBExtras.h */,
+				F4482FF61520FA76002549BB /* NSString+SBExtras.m */,
 				F41CFC86151E60B600B29FCE /* NSArray+SBExtras.h */,
 				F41CFC87151E60B600B29FCE /* NSArray+SBExtras.m */,
 				F41CFC8A151E61EE00B29FCE /* NSObject+SBExtras.h */,
@@ -181,6 +187,7 @@
 				F41CFC9B151E75EA00B29FCE /* SBDrawingHelpers.h in Headers */,
 				F41CFCB7151E81CC00B29FCE /* MAKVONotificationCenter.h in Headers */,
 				F41CFCA0151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.h in Headers */,
+				F4482FF71520FA76002549BB /* NSString+SBExtras.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +308,7 @@
 				F41CFC9C151E75EA00B29FCE /* SBDrawingHelpers.m in Sources */,
 				F41CFCA1151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m in Sources */,
 				F41CFCB8151E81CC00B29FCE /* MAKVONotificationCenter.m in Sources */,
+				F4482FF81520FA76002549BB /* NSString+SBExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

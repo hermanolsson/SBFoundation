@@ -16,6 +16,7 @@
 		F41CFC72151E364900B29FCE /* SBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41CFC71151E364900B29FCE /* SBFoundation.framework */; };
 		F41CFC76151E3C2200B29FCE /* SBMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41CFC75151E3C2200B29FCE /* SBMain.xib */; };
 		F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */; };
+		F4482FFB1520FB80002549BB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4482FFA1520FB80002549BB /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		F41CFC75151E3C2200B29FCE /* SBMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBMain.xib; sourceTree = "<group>"; };
 		F41CFC7A151E3D0700B29FCE /* SBDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDemoViewController.h; sourceTree = "<group>"; };
 		F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDemoViewController.m; sourceTree = "<group>"; };
+		F4482FFA1520FB80002549BB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4482FFB1520FB80002549BB /* CoreText.framework in Frameworks */,
 				F41CFC72151E364900B29FCE /* SBFoundation.framework in Frameworks */,
 				F41CFC48151E358A00B29FCE /* UIKit.framework in Frameworks */,
 				F41CFC4A151E358A00B29FCE /* Foundation.framework in Frameworks */,
@@ -71,6 +74,7 @@
 		F41CFC46151E358A00B29FCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4482FFA1520FB80002549BB /* CoreText.framework */,
 				F41CFC47151E358A00B29FCE /* UIKit.framework */,
 				F41CFC49151E358A00B29FCE /* Foundation.framework */,
 				F41CFC4B151E358A00B29FCE /* CoreGraphics.framework */,
