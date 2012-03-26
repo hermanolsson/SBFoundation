@@ -6,6 +6,7 @@ Yes, yes, I know, yet another collection of ObjC categories.
 SBFoundation use the "Real" [iOS Universal Framework](https://github.com/kstenerud/iOS-Universal-Framework). This is because it should be very easy to both develop and ship as a binary. For building the FW you then need to patch your Xcode installation, however, I will try to release a compiled ready-to-rock version for every major version.
 
 Make sure your target already links with:
+
 * CoreText.framework
 
 ### Workspace
