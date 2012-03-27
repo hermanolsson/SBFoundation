@@ -7,9 +7,21 @@
 
 #import "NSString+SBExtras.h"
 
+@interface NSString (SBExtrasPrivate)
+- (CGSize)inPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw;
+@end
+
 @implementation NSString (SBExtras)
 
 - (CGSize)drawInPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment {
+    return [self inPath:path withFont:font lineBreakMode:lineBreakMode alignment:alignment draw:YES];
+}
+
+- (CGSize)sizeWithFont:(UIFont *)font constrainedToPath:(UIBezierPath *)path lineBreakMode:(UILineBreakMode)lineBreakMode {
+    return [self inPath:path withFont:font lineBreakMode:lineBreakMode alignment:kCTLeftTextAlignment draw:NO];
+}
+
+- (CGSize)inPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw {
     CTLineBreakMode trunctationLineBreakMode = kCTLineBreakByClipping;
     CTLineBreakMode attributeLineBreakMode = kCTLineBreakByWordWrapping;
     
@@ -91,7 +103,8 @@
     for (NSUInteger lineIndex = 0; lineIndex < numberOfLines-1; lineIndex++) {
         CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
         CTLineRef line = CFArrayGetValueAtIndex(lines, lineIndex);
-        CTLineDraw(line, context);
+        if (draw)
+            CTLineDraw(line, context);
         
         // Sizing
         if (lineOrigins[lineIndex].x < minimumOrigin)
@@ -107,6 +120,7 @@
     CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x, lineOrigins[numberOfLines-1].y);
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, numberOfLines-1);
+    lastLine = CFRetain(lastLine);
     
     if (truncateLastLine) {
         // Create truncation token by using correct attributes
@@ -152,14 +166,25 @@
         CFRelease(truncationToken);
         
         if (truncatedLine == NULL) 
-            truncatedLine = (CTLineRef)CFRetain(lastLine); 
+            truncatedLine = CFRetain(lastLine); 
         
-        CTLineDraw(truncatedLine, context); 
-        CFRelease(truncatedLine);
+        lastLine = truncatedLine;
     }
-    else
+    
+    if (draw)
         CTLineDraw(lastLine, context);
     
+    // Sizing
+    if (lineOrigins[numberOfLines-1].x < minimumOrigin)
+        minimumOrigin = lineOrigins[numberOfLines-1].x;
+    
+    CGFloat width = (CGFloat)CTLineGetTypographicBounds(lastLine, NULL, NULL, NULL);
+    
+    if (lineOrigins[numberOfLines-1].x + width > maximumWidth)
+        maximumWidth = lineOrigins[numberOfLines-1].x + width;
+    
+    // Release
+    CFRelease(lastLine);
     CFRelease(string);
     CFRelease(framesetter);
     CFRelease(frame); 
@@ -167,12 +192,8 @@
     // Restore context
     CGContextRestoreGState(context);
     
-    return CGSizeMake(maximumWidth-minimumOrigin,path.bounds.size.height-lineOrigins[numberOfLines-1].y);
-}
-
-- (CGSize)sizeWithFont:(UIFont *)font constrainedToPath:(UIBezierPath *)path lineBreakMode:(UILineBreakMode)lineBreakMode {
-    //TBI
-    return CGSizeZero;
+    // We need a better way figure out the total height
+    return CGSizeMake(maximumWidth-minimumOrigin,path.bounds.size.height-lineOrigins[numberOfLines-1].y+font.pointSize-15.);   
 }
 
 @end

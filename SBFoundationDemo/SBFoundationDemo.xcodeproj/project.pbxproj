@@ -17,6 +17,7 @@
 		F41CFC76151E3C2200B29FCE /* SBMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41CFC75151E3C2200B29FCE /* SBMain.xib */; };
 		F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */; };
 		F4482FFB1520FB80002549BB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4482FFA1520FB80002549BB /* CoreText.framework */; };
+		F4BD11A01522360000ADA85D /* SBDrawingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BD119F1522360000ADA85D /* SBDrawingTestView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		F41CFC7A151E3D0700B29FCE /* SBDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDemoViewController.h; sourceTree = "<group>"; };
 		F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDemoViewController.m; sourceTree = "<group>"; };
 		F4482FFA1520FB80002549BB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F4BD119E1522360000ADA85D /* SBDrawingTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SBDrawingTestView.h; sourceTree = "<group>"; };
+		F4BD119F1522360000ADA85D /* SBDrawingTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDrawingTestView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 		F41CFC7D151E3D8700B29FCE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F4BD119E1522360000ADA85D /* SBDrawingTestView.h */,
+				F4BD119F1522360000ADA85D /* SBDrawingTestView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				F41CFC54151E358A00B29FCE /* main.m in Sources */,
 				F41CFC58151E358A00B29FCE /* SBAppDelegate.m in Sources */,
 				F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */,
+				F4BD11A01522360000ADA85D /* SBDrawingTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
