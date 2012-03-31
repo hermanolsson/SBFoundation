@@ -42,6 +42,8 @@
             break;
     }
     
+    CGPoint pathBoundingBoxOffset = CGPointMake(CGPathGetBoundingBox(path.CGPath).origin.x, CGPathGetBoundingBox(path.CGPath).origin.y);
+    
     // Save contex and flip the coordinate system
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -98,10 +100,10 @@
     
     CGPoint lineOrigins[numberOfLines];
     CTFrameGetLineOrigins(frame, CFRangeMake(0, numberOfLines), lineOrigins);
-    
+        
     // Draw "normal" rows
     for (NSUInteger lineIndex = 0; lineIndex < numberOfLines-1; lineIndex++) {
-        CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
+        CGContextSetTextPosition(context, lineOrigins[lineIndex].x+pathBoundingBoxOffset.x, lineOrigins[lineIndex].y-pathBoundingBoxOffset.y);
         CTLineRef line = CFArrayGetValueAtIndex(lines, lineIndex);
         if (draw)
             CTLineDraw(line, context);
@@ -117,7 +119,7 @@
     }
     
     // Set origin for last row
-    CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x, lineOrigins[numberOfLines-1].y);
+    CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x+pathBoundingBoxOffset.x, lineOrigins[numberOfLines-1].y-pathBoundingBoxOffset.y);
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, numberOfLines-1);
     lastLine = CFRetain(lastLine);
