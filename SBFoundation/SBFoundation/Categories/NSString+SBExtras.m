@@ -42,15 +42,14 @@
             break;
     }
     
-    CGPoint pathBoundingBoxOffset = CGPointMake(CGPathGetBoundingBox(path.CGPath).origin.x, CGPathGetBoundingBox(path.CGPath).origin.y);
-    
     // Save contex and flip the coordinate system
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
+    CGPoint pathBoundingBoxOffset = CGPointMake(CGPathGetBoundingBox(path.CGPath).origin.x, CGPathGetBoundingBox(path.CGPath).origin.y);
     [path applyTransform:CGAffineTransformMakeScale(1., -1.)];
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-    CGContextTranslateCTM(context, 0, path.bounds.size.height);
+    CGContextTranslateCTM(context, pathBoundingBoxOffset.x, path.bounds.size.height+pathBoundingBoxOffset.y);
     CGContextScaleCTM(context, 1., -1.);
     
     // Create the string
@@ -103,7 +102,7 @@
         
     // Draw "normal" rows
     for (NSUInteger lineIndex = 0; lineIndex < numberOfLines-1; lineIndex++) {
-        CGContextSetTextPosition(context, lineOrigins[lineIndex].x+pathBoundingBoxOffset.x, lineOrigins[lineIndex].y-pathBoundingBoxOffset.y);
+        CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
         CTLineRef line = CFArrayGetValueAtIndex(lines, lineIndex);
         if (draw)
             CTLineDraw(line, context);
@@ -119,7 +118,7 @@
     }
     
     // Set origin for last row
-    CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x+pathBoundingBoxOffset.x, lineOrigins[numberOfLines-1].y-pathBoundingBoxOffset.y);
+    CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x, lineOrigins[numberOfLines-1].y);
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, numberOfLines-1);
     lastLine = CFRetain(lastLine);
