@@ -13,12 +13,22 @@
 		F41CFC52151E358A00B29FCE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F41CFC50151E358A00B29FCE /* InfoPlist.strings */; };
 		F41CFC54151E358A00B29FCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC53151E358A00B29FCE /* main.m */; };
 		F41CFC58151E358A00B29FCE /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC57151E358A00B29FCE /* SBAppDelegate.m */; };
-		F41CFC72151E364900B29FCE /* SBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41CFC71151E364900B29FCE /* SBFoundation.framework */; };
 		F41CFC76151E3C2200B29FCE /* SBMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41CFC75151E3C2200B29FCE /* SBMain.xib */; };
 		F41CFC7C151E3D0700B29FCE /* SBDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */; };
 		F4482FFB1520FB80002549BB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4482FFA1520FB80002549BB /* CoreText.framework */; };
+		F4B917341541AF9D0095DCF0 /* libSBFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B917331541AF9D0095DCF0 /* libSBFoundation.a */; };
 		F4BD11A01522360000ADA85D /* SBDrawingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BD119F1522360000ADA85D /* SBDrawingTestView.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4B9173C1541AFEB0095DCF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4B917351541AFEB0095DCF0 /* SBFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4B917141541AEB10095DCF0;
+			remoteInfo = SBFoundation;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F41CFC43151E358A00B29FCE /* SBFoundationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBFoundationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,12 +41,13 @@
 		F41CFC55151E358A00B29FCE /* SBFoundationDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SBFoundationDemo-Prefix.pch"; sourceTree = "<group>"; };
 		F41CFC56151E358A00B29FCE /* SBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAppDelegate.h; sourceTree = "<group>"; };
 		F41CFC57151E358A00B29FCE /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
-		F41CFC71151E364900B29FCE /* SBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SBFoundation.framework; path = "../../../Library/Developer/Xcode/DerivedData/SBFoundation-bdxmzqzuloilgfhesfxwsvxbstkg/Build/Products/Debug-iphoneos/SBFoundation.framework"; sourceTree = "<group>"; };
 		F41CFC75151E3C2200B29FCE /* SBMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBMain.xib; sourceTree = "<group>"; };
 		F41CFC7A151E3D0700B29FCE /* SBDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDemoViewController.h; sourceTree = "<group>"; };
 		F41CFC7B151E3D0700B29FCE /* SBDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDemoViewController.m; sourceTree = "<group>"; };
 		F4482FFA1520FB80002549BB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		F4BD119E1522360000ADA85D /* SBDrawingTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SBDrawingTestView.h; sourceTree = "<group>"; };
+		F4B917331541AF9D0095DCF0 /* libSBFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSBFoundation.a; path = "../SBFoundation/build/Release-iphoneos/libSBFoundation.a"; sourceTree = "<group>"; };
+		F4B917351541AFEB0095DCF0 /* SBFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBFoundation.xcodeproj; path = ../SBFoundation/SBFoundation.xcodeproj; sourceTree = "<group>"; };
+		F4BD119E1522360000ADA85D /* SBDrawingTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDrawingTestView.h; sourceTree = "<group>"; };
 		F4BD119F1522360000ADA85D /* SBDrawingTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDrawingTestView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,8 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B917341541AF9D0095DCF0 /* libSBFoundation.a in Frameworks */,
 				F4482FFB1520FB80002549BB /* CoreText.framework in Frameworks */,
-				F41CFC72151E364900B29FCE /* SBFoundation.framework in Frameworks */,
 				F41CFC48151E358A00B29FCE /* UIKit.framework in Frameworks */,
 				F41CFC4A151E358A00B29FCE /* Foundation.framework in Frameworks */,
 				F41CFC4C151E358A00B29FCE /* CoreGraphics.framework in Frameworks */,
@@ -59,7 +70,8 @@
 		F41CFC38151E358A00B29FCE = {
 			isa = PBXGroup;
 			children = (
-				F41CFC71151E364900B29FCE /* SBFoundation.framework */,
+				F4B917351541AFEB0095DCF0 /* SBFoundation.xcodeproj */,
+				F4B917331541AF9D0095DCF0 /* libSBFoundation.a */,
 				F41CFC4D151E358A00B29FCE /* SBFoundationDemo */,
 				F41CFC46151E358A00B29FCE /* Frameworks */,
 				F41CFC44151E358A00B29FCE /* Products */,
@@ -127,6 +139,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F4B917361541AFEB0095DCF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4B9173D1541AFEB0095DCF0 /* libSBFoundation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,12 +187,28 @@
 			mainGroup = F41CFC38151E358A00B29FCE;
 			productRefGroup = F41CFC44151E358A00B29FCE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F4B917361541AFEB0095DCF0 /* Products */;
+					ProjectRef = F4B917351541AFEB0095DCF0 /* SBFoundation.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F41CFC42151E358A00B29FCE /* SBFoundationDemo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F4B9173D1541AFEB0095DCF0 /* libSBFoundation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSBFoundation.a;
+			remoteRef = F4B9173C1541AFEB0095DCF0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F41CFC41151E358A00B29FCE /* Resources */ = {
@@ -260,12 +296,10 @@
 		F41CFC5C151E358A00B29FCE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/SBFoundation-bdxmzqzuloilgfhesfxwsvxbstkg/Build/Products/Debug-iphoneos\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SBFoundationDemo/SBFoundationDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../SBFoundation/**";
 				INFOPLIST_FILE = "SBFoundationDemo/SBFoundationDemo-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -279,12 +313,10 @@
 		F41CFC5D151E358A00B29FCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/SBFoundation-bdxmzqzuloilgfhesfxwsvxbstkg/Build/Products/Debug-iphoneos\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SBFoundationDemo/SBFoundationDemo-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../SBFoundation/**";
 				INFOPLIST_FILE = "SBFoundationDemo/SBFoundationDemo-Info.plist";
 				OTHER_LDFLAGS = (
 					"-all_load",

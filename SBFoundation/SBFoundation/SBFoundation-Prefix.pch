@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'SBFoundation' target in the 'SBFoundation' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif
