@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SBFoundationDemo.xcodeproj">
+      location = "self:SBFoundation.xcodeproj">
    </FileRef>
 </Workspace>

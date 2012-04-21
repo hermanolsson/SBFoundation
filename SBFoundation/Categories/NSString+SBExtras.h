@@ -10,7 +10,7 @@
 
 @interface NSString (SBExtras)
 
-// Return is the bounding size
+// Return the bounding size
 - (CGSize)drawInPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment;
 - (CGSize)sizeWithFont:(UIFont *)font constrainedToPath:(UIBezierPath *)path lineBreakMode:(UILineBreakMode)lineBreakMode;
 

@@ -35,6 +35,7 @@ return thing
 #import "UITableView+SBExtras.h"
 #import "UIView+SBExtras.h"
 #import "NSString+SBExtras.h"
+#import "NSAttributedString+SBExtras.h"
 
 // Helpers
 #import "SBLog.h"

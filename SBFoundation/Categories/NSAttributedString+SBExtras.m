@@ -1,27 +1,32 @@
 //
-//  NSString+SBExtras.m
+//  NSAttributedString+SBExtras.m
 //  SBFoundation
 //
 //  Copyright (c) 2012 Simon Blommegård. All rights reserved.
 //
 
-#import "NSString+SBExtras.h"
+#import "NSAttributedString+SBExtras.h"
 
-@interface NSString (SBExtrasPrivate)
-- (CGSize)inPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw;
+@interface NSAttributedString (SBExtrasPrivate)
+- (CGSize)inPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw;
 @end
 
-@implementation NSString (SBExtras)
 
-- (CGSize)drawInPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment {
-    return [self inPath:path withFont:font lineBreakMode:lineBreakMode alignment:alignment draw:YES];
+@implementation NSAttributedString (SBExtras)
+
+- (CGSize)drawInPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment {
+    return [self inPath:path withLineBreakMode:lineBreakMode alignment:alignment draw:YES];
 }
 
-- (CGSize)sizeWithFont:(UIFont *)font constrainedToPath:(UIBezierPath *)path lineBreakMode:(UILineBreakMode)lineBreakMode {
-    return [self inPath:path withFont:font lineBreakMode:lineBreakMode alignment:kCTLeftTextAlignment draw:NO];
+- (CGSize)sizeConstrainedToPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment {
+    return [self inPath:path withLineBreakMode:lineBreakMode alignment:kCTLeftTextAlignment draw:NO];
 }
 
-- (CGSize)inPath:(UIBezierPath *)path withFont:(UIFont *)font lineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw {
+@end
+
+@implementation NSAttributedString (SBExtrasPrivate)
+
+- (CGSize)inPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment draw:(BOOL)draw {
     CTLineBreakMode trunctationLineBreakMode = kCTLineBreakByClipping;
     CTLineBreakMode attributeLineBreakMode = kCTLineBreakByWordWrapping;
     
@@ -53,8 +58,7 @@
     CGContextScaleCTM(context, 1., -1.);
     
     // Create the string
-    CFMutableAttributedStringRef string = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
-    CFAttributedStringReplaceString (string, CFRangeMake(0, 0), (__bridge CFStringRef)self);
+    CFMutableAttributedStringRef string = CFAttributedStringCreateMutableCopy(kCFAllocatorDefault, 0, (__bridge CFAttributedStringRef)self);
     
     // Alignment + LineBreakMode
     CTParagraphStyleSetting settings[] = {
@@ -65,14 +69,6 @@
     CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, sizeof(settings) / sizeof(settings[0]));
     CFAttributedStringSetAttribute(string, CFRangeMake(0, CFAttributedStringGetLength(string)), kCTParagraphStyleAttributeName, paragraphStyle);
     CFRelease(paragraphStyle);
-    
-    // Font
-    CTFontRef ctFont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
-    CFAttributedStringSetAttribute(string, CFRangeMake(0, CFAttributedStringGetLength(string)), kCTFontAttributeName, ctFont);
-    CFRelease(ctFont);
-    
-    // Color
-    CFAttributedStringSetAttribute(string, CFRangeMake(0, CFAttributedStringGetLength(string)), kCTForegroundColorFromContextAttributeName, kCFBooleanTrue);
     
     // Create the framesetter
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(string);
@@ -99,7 +95,7 @@
     
     CGPoint lineOrigins[numberOfLines];
     CTFrameGetLineOrigins(frame, CFRangeMake(0, numberOfLines), lineOrigins);
-        
+    
     // Draw "normal" rows
     for (NSUInteger lineIndex = 0; lineIndex < numberOfLines-1; lineIndex++) {
         CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
@@ -124,9 +120,35 @@
     lastLine = CFRetain(lastLine);
     
     if (truncateLastLine) {
-        // Create truncation token by using correct attributes
         CFRange lastLineRange = CTLineGetStringRange(lastLine);
-        CFDictionaryRef attributes = CFAttributedStringGetAttributes(string, lastLineRange.location + lastLineRange.length - 1, NULL);
+        
+        // Get correct truncstionType & position
+        CTLineTruncationType truncationType;
+        NSUInteger truncationAttributePosition = lastLineRange.location;
+        
+        // Multiple lines, only use kCTLineTruncationEnd
+        if (numberOfLines != 1) {
+            truncationType = kCTLineTruncationEnd;
+            truncationAttributePosition += (lastLineRange.length - 1);
+        }
+        else
+            switch (trunctationLineBreakMode) {
+                case kCTLineBreakByTruncatingHead:
+                    truncationType = kCTLineTruncationStart;
+                    break;
+                case kCTLineBreakByTruncatingMiddle:
+                    truncationType = kCTLineTruncationMiddle;
+                    truncationAttributePosition += (lastLineRange.length / 2);
+                    break;
+                case kCTLineBreakByTruncatingTail:
+                default:
+                    truncationType = kCTLineTruncationEnd;
+                    truncationAttributePosition += (lastLineRange.length - 1);
+                    break;
+            }
+        
+        // Create truncation token by using correct attributes
+        CFDictionaryRef attributes = CFAttributedStringGetAttributes(string, truncationAttributePosition, NULL);
         CFAttributedStringRef tokenString = CFAttributedStringCreate(kCFAllocatorDefault, CFSTR("\u2026"), attributes);
         CTLineRef truncationToken = CTLineCreateWithAttributedString(tokenString);
         CFRelease(tokenString);
@@ -138,26 +160,6 @@
         CFAttributedStringRef truncationString = CFAttributedStringCreateWithSubstring(kCFAllocatorDefault, string, truncationStringRange);
         CTLineRef truncationLine = CTLineCreateWithAttributedString(truncationString); 
         CFRelease(truncationString);
-        
-        // Get correct truncstionType
-        CTLineTruncationType truncationType;
-        
-        // Multiple lines, only use kCTLineTruncationEnd
-        if (numberOfLines != 1)
-            truncationType = kCTLineTruncationEnd;
-        else
-            switch (trunctationLineBreakMode) {
-                case kCTLineBreakByTruncatingHead:
-                    truncationType = kCTLineTruncationStart;
-                    break;
-                case kCTLineBreakByTruncatingMiddle:
-                    truncationType = kCTLineTruncationMiddle;
-                    break;
-                case kCTLineBreakByTruncatingTail:
-                default:
-                    truncationType = kCTLineTruncationEnd;
-                    break;
-            }
         
         // Truncate
         double lastLineWidth = CTLineGetTypographicBounds(lastLine, NULL, NULL, NULL)+CTLineGetTrailingWhitespaceWidth(lastLine);
@@ -194,7 +196,7 @@
     CGContextRestoreGState(context);
     
     // We need a better way figure out the total height
-    return CGSizeMake(maximumWidth-minimumOrigin,path.bounds.size.height-lineOrigins[numberOfLines-1].y+font.pointSize-15.);   
+    return CGSizeMake(maximumWidth-minimumOrigin,path.bounds.size.height-lineOrigins[numberOfLines-1].y);
 }
 
 @end
