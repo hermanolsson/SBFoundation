@@ -12,6 +12,6 @@
 
 // Return the bounding size
 - (CGSize)drawInPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment;
-- (CGSize)sizeConstrainedToPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment;
+- (CGSize)sizeConstrainedToPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode;
 
 @end

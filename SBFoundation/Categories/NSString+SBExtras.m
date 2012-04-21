@@ -19,7 +19,7 @@
 }
 
 - (CGSize)sizeWithFont:(UIFont *)font constrainedToPath:(UIBezierPath *)path lineBreakMode:(UILineBreakMode)lineBreakMode {
-    return [[self attributedStringWithFont:font] sizeConstrainedToPath:path withLineBreakMode:lineBreakMode alignment:kCTLeftTextAlignment];
+    return [[self attributedStringWithFont:font] sizeConstrainedToPath:path withLineBreakMode:lineBreakMode];
 }
 
 @end

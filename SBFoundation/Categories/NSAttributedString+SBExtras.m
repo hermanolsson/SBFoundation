@@ -18,7 +18,7 @@
     return [self inPath:path withLineBreakMode:lineBreakMode alignment:alignment draw:YES];
 }
 
-- (CGSize)sizeConstrainedToPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode alignment:(CTTextAlignment)alignment {
+- (CGSize)sizeConstrainedToPath:(UIBezierPath *)path withLineBreakMode:(UILineBreakMode)lineBreakMode {
     return [self inPath:path withLineBreakMode:lineBreakMode alignment:kCTLeftTextAlignment draw:NO];
 }
 
@@ -48,15 +48,19 @@
     }
     
     // Save contex and flip the coordinate system
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+    if (draw)
+        CGContextSaveGState(context);
     
     CGPoint pathBoundingBoxOffset = CGPointMake(CGPathGetBoundingBox(path.CGPath).origin.x, CGPathGetBoundingBox(path.CGPath).origin.y);
     [path applyTransform:CGAffineTransformMakeScale(1., -1.)];
-    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-    CGContextTranslateCTM(context, pathBoundingBoxOffset.x, path.bounds.size.height+pathBoundingBoxOffset.y);
-    CGContextScaleCTM(context, 1., -1.);
     
+    if (draw) {
+        CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+        CGContextTranslateCTM(context, pathBoundingBoxOffset.x, path.bounds.size.height+pathBoundingBoxOffset.y);
+        CGContextScaleCTM(context, 1., -1.);
+    }
+        
     // Create the string
     CFMutableAttributedStringRef string = CFAttributedStringCreateMutableCopy(kCFAllocatorDefault, 0, (__bridge CFAttributedStringRef)self);
     
@@ -98,10 +102,12 @@
     
     // Draw "normal" rows
     for (NSUInteger lineIndex = 0; lineIndex < numberOfLines-1; lineIndex++) {
-        CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
         CTLineRef line = CFArrayGetValueAtIndex(lines, lineIndex);
-        if (draw)
+        
+        if (draw) {
+            CGContextSetTextPosition(context, lineOrigins[lineIndex].x, lineOrigins[lineIndex].y);
             CTLineDraw(line, context);
+        }
         
         // Sizing
         if (lineOrigins[lineIndex].x < minimumOrigin)
@@ -114,7 +120,8 @@
     }
     
     // Set origin for last row
-    CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x, lineOrigins[numberOfLines-1].y);
+    if (draw)
+        CGContextSetTextPosition(context, lineOrigins[numberOfLines-1].x, lineOrigins[numberOfLines-1].y);
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, numberOfLines-1);
     lastLine = CFRetain(lastLine);
@@ -193,7 +200,8 @@
     CFRelease(frame); 
     
     // Restore context
-    CGContextRestoreGState(context);
+    if (draw)
+        CGContextRestoreGState(context);
     
     // We need a better way figure out the total height
     return CGSizeMake(maximumWidth-minimumOrigin,path.bounds.size.height-lineOrigins[numberOfLines-1].y);
