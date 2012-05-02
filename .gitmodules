@@ -1,3 +1,6 @@
 [submodule "SBFoundation/External/MAKVONotificationCenter"]
 	path = SBFoundation/External/MAKVONotificationCenter
 	url = https://github.com/mikeash/MAKVONotificationCenter.git
+[submodule "SBFoundation/External/TFKeychain"]
+	path = SBFoundation/External/TFKeychain
+	url = https://github.com/tomasf/TFKeychain.git
