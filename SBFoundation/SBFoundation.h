@@ -2,14 +2,6 @@
 //  SBFoundation.h
 //  SBFoundation
 //
-//  Created by Simon Blommegård on 2012-04-20.
-//  Copyright (c) 2012 Doubleint. All rights reserved.
-//
-
-//
-//  SBFoundation.h
-//  SBFoundation
-//
 //  Copyright (c) 2012 Simon Blommegård. All rights reserved.
 //
 
@@ -43,6 +35,9 @@ return thing
 
 // Controllers
 #import "SBNetworkActivityIndicatorQueue.h"
+
+// Views
+#import "SBTableViewCell.h"
 
 // External
 #import "MAKVONotificationCenter.h"

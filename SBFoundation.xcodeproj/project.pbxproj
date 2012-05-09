@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F429554B155B02950063B2E6 /* SBTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F4295549155B02950063B2E6 /* SBTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F429554C155B02950063B2E6 /* SBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F429554A155B02950063B2E6 /* SBTableViewCell.m */; };
 		F4840EF4155184300007EA8E /* MAKVONotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = F4840EF2155184300007EA8E /* MAKVONotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4840EF5155184300007EA8E /* MAKVONotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4840EF3155184300007EA8E /* MAKVONotificationCenter.m */; };
 		F4840EF81551843A0007EA8E /* TFKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = F4840EF61551843A0007EA8E /* TFKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,6 +50,8 @@
 		F41CFC9A151E75EA00B29FCE /* SBDrawingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDrawingHelpers.m; sourceTree = "<group>"; };
 		F41CFC9E151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNetworkActivityIndicatorQueue.h; sourceTree = "<group>"; };
 		F41CFC9F151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetworkActivityIndicatorQueue.m; sourceTree = "<group>"; };
+		F4295549155B02950063B2E6 /* SBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTableViewCell.h; sourceTree = "<group>"; };
+		F429554A155B02950063B2E6 /* SBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTableViewCell.m; sourceTree = "<group>"; };
 		F4482FF51520FA76002549BB /* NSString+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBExtras.h"; sourceTree = "<group>"; };
 		F4482FF61520FA76002549BB /* NSString+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBExtras.m"; sourceTree = "<group>"; };
 		F4821950151E3379003C7687 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +118,15 @@
 			name = MAKVONotificationCenter;
 			sourceTree = "<group>";
 		};
+		F4295547155B02810063B2E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4295549155B02950063B2E6 /* SBTableViewCell.h */,
+				F429554A155B02950063B2E6 /* SBTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F482193E151E3379003C7687 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +155,7 @@
 		F4821952151E3379003C7687 /* SBFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				F4295547155B02810063B2E6 /* Views */,
 				F41CFCA2151E7E5500B29FCE /* External */,
 				F41CFC9D151E7C2400B29FCE /* Controllers */,
 				F482195F151E33A2003C7687 /* Categories */,
@@ -208,6 +222,7 @@
 				F4B917401541B2AE0095DCF0 /* NSAttributedString+SBExtras.h in Headers */,
 				F4840EF4155184300007EA8E /* MAKVONotificationCenter.h in Headers */,
 				F4840EF81551843A0007EA8E /* TFKeychain.h in Headers */,
+				F429554B155B02950063B2E6 /* SBTableViewCell.h in Headers */,
 				F4B917201541AF450095DCF0 /* SBLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +290,7 @@
 				F4B917411541B2AE0095DCF0 /* NSAttributedString+SBExtras.m in Sources */,
 				F4840EF5155184300007EA8E /* MAKVONotificationCenter.m in Sources */,
 				F4840EF91551843A0007EA8E /* TFKeychain.m in Sources */,
+				F429554C155B02950063B2E6 /* SBTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
