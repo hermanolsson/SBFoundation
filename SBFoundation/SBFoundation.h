@@ -35,6 +35,7 @@ return thing
 
 // Controllers
 #import "SBNetworkActivityIndicatorQueue.h"
+#import "SBKeychain.h"
 
 // Views
 #import "SBTableViewCell.h"
@@ -42,4 +43,3 @@ return thing
 
 // External
 #import "MAKVONotificationCenter.h"
-#import "TFKeychain.h"

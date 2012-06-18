@@ -13,8 +13,8 @@
 		F429555E155B05A90063B2E6 /* SBBlockDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = F429555C155B05A90063B2E6 /* SBBlockDrawView.m */; };
 		F4840EF4155184300007EA8E /* MAKVONotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = F4840EF2155184300007EA8E /* MAKVONotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4840EF5155184300007EA8E /* MAKVONotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4840EF3155184300007EA8E /* MAKVONotificationCenter.m */; };
-		F4840EF81551843A0007EA8E /* TFKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = F4840EF61551843A0007EA8E /* TFKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F4840EF91551843A0007EA8E /* TFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F4840EF71551843A0007EA8E /* TFKeychain.m */; };
+		F48F2A4B158F5597001B60DF /* SBKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = F48F2A49158F5597001B60DF /* SBKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F48F2A4C158F5597001B60DF /* SBKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F2A4A158F5597001B60DF /* SBKeychain.m */; };
 		F4B917151541AEB10095DCF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4821950151E3379003C7687 /* Foundation.framework */; };
 		F4B9171F1541AF410095DCF0 /* SBFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = F482195E151E3391003C7687 /* SBFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F4B917201541AF450095DCF0 /* SBLog.h in Headers */ = {isa = PBXBuildFile; fileRef = F41CFC82151E5D5400B29FCE /* SBLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,8 +65,8 @@
 		F482195E151E3391003C7687 /* SBFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBFoundation.h; sourceTree = "<group>"; };
 		F4840EF2155184300007EA8E /* MAKVONotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAKVONotificationCenter.h; path = External/MAKVONotificationCenter/MAKVONotificationCenter.h; sourceTree = "<group>"; };
 		F4840EF3155184300007EA8E /* MAKVONotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAKVONotificationCenter.m; path = External/MAKVONotificationCenter/MAKVONotificationCenter.m; sourceTree = "<group>"; };
-		F4840EF61551843A0007EA8E /* TFKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFKeychain.h; path = External/TFKeychain/TFKeychain.h; sourceTree = "<group>"; };
-		F4840EF71551843A0007EA8E /* TFKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFKeychain.m; path = External/TFKeychain/TFKeychain.m; sourceTree = "<group>"; };
+		F48F2A49158F5597001B60DF /* SBKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBKeychain.h; sourceTree = "<group>"; };
+		F48F2A4A158F5597001B60DF /* SBKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBKeychain.m; sourceTree = "<group>"; };
 		F4B917141541AEB10095DCF0 /* libSBFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSBFoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B9173E1541B2AE0095DCF0 /* NSAttributedString+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+SBExtras.h"; sourceTree = "<group>"; };
 		F4B9173F1541B2AE0095DCF0 /* NSAttributedString+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+SBExtras.m"; sourceTree = "<group>"; };
@@ -100,6 +100,8 @@
 			children = (
 				F41CFC9E151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.h */,
 				F41CFC9F151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m */,
+				F48F2A49158F5597001B60DF /* SBKeychain.h */,
+				F48F2A4A158F5597001B60DF /* SBKeychain.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,7 +109,6 @@
 		F41CFCA2151E7E5500B29FCE /* External */ = {
 			isa = PBXGroup;
 			children = (
-				F4840EF0155182BC0007EA8E /* TFKeychain */,
 				F41CFCB4151E81BB00B29FCE /* MAKVONotificationCenter */,
 			);
 			name = External;
@@ -201,15 +202,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		F4840EF0155182BC0007EA8E /* TFKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				F4840EF61551843A0007EA8E /* TFKeychain.h */,
-				F4840EF71551843A0007EA8E /* TFKeychain.m */,
-			);
-			name = TFKeychain;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -227,9 +219,9 @@
 				F4B917231541AF4D0095DCF0 /* NSArray+SBExtras.h in Headers */,
 				F4B917401541B2AE0095DCF0 /* NSAttributedString+SBExtras.h in Headers */,
 				F4840EF4155184300007EA8E /* MAKVONotificationCenter.h in Headers */,
-				F4840EF81551843A0007EA8E /* TFKeychain.h in Headers */,
 				F429554B155B02950063B2E6 /* SBTableViewCell.h in Headers */,
 				F4B917201541AF450095DCF0 /* SBLog.h in Headers */,
+				F48F2A4B158F5597001B60DF /* SBKeychain.h in Headers */,
 				F429555D155B05A90063B2E6 /* SBBlockDrawView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,9 +288,9 @@
 				F4B9172D1541AF680095DCF0 /* NSObject+SBExtras.m in Sources */,
 				F4B917411541B2AE0095DCF0 /* NSAttributedString+SBExtras.m in Sources */,
 				F4840EF5155184300007EA8E /* MAKVONotificationCenter.m in Sources */,
-				F4840EF91551843A0007EA8E /* TFKeychain.m in Sources */,
 				F429554C155B02950063B2E6 /* SBTableViewCell.m in Sources */,
 				F429555E155B05A90063B2E6 /* SBBlockDrawView.m in Sources */,
+				F48F2A4C158F5597001B60DF /* SBKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
