@@ -15,6 +15,9 @@
 }
 
 + (id)dataForKey:(NSString *)key class:(Class)outpucClass {
+  if (!key)
+    return nil;
+  
 	NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
                          (id)kCFBooleanTrue, kSecReturnData,
                          kSecClassGenericPassword, kSecClass,
@@ -27,19 +30,14 @@
 	
   id data = nil;
   
-  if (!outpucClass)
+  if (!outpucClass || outpucClass == [NSData class])
     data = (__bridge id)keychainData;
   
-  else if ([outpucClass instancesRespondToSelector:@selector(initWithData:encoding:)])
-    data = [[outpucClass alloc] initWithData:(__bridge id)keychainData encoding:NSUTF8StringEncoding];
-  
-  else if ([outpucClass instancesRespondToSelector:@selector(initWithData:)])
-    data = [[outpucClass alloc]initWithData:(__bridge id)keychainData];
-  
+  else if ([outpucClass conformsToProtocol:@protocol(NSCoding)])
+    data = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge id)keychainData];
   else
     [NSException raise:NSInternalInconsistencyException
-                format:@"Class %@ does not respond to -initWithData:encoding: or -initWithData:.", NSStringFromClass(outpucClass)];
-    
+                format:@"Class %@ does not conforms to NSCoding", NSStringFromClass(outpucClass)];
   
 	CFRelease(keychainData);
 	return data;
@@ -47,20 +45,19 @@
 
 
 + (BOOL)setData:(id)data forKey:(NSString *)key {
+  if (!data || !key)
+    return NO;
+  
 	NSData *keychainData = nil;
   
   if ([data isKindOfClass:[NSData class]])
     keychainData = data;
   
-  else if ([data respondsToSelector:@selector(dataUsingEncoding:)])
-    keychainData = [data dataUsingEncoding:NSUTF8StringEncoding];
-  
-  else if ([data respondsToSelector:@selector(data)])
-    keychainData = [data data];
-  
+  else if ([data conformsToProtocol:@protocol(NSCoding)])
+    keychainData = [NSKeyedArchiver archivedDataWithRootObject:data];
   else
     [NSException raise:NSInternalInconsistencyException
-                format:@"Class %@ does not respond to -dataUsingEncoding: or -data.", NSStringFromClass([data class])];
+                format:@"Class %@ does not conforms to NSCoding", NSStringFromClass([data class])];
   
 	NSDictionary *spec = [NSDictionary dictionaryWithObjectsAndKeys:
                         (__bridge id)kSecClassGenericPassword, kSecClass,
