@@ -50,12 +50,13 @@
   
 	NSData *keychainData = nil;
   
-  if ([data isKindOfClass:[NSData class]])
+  
+  if (data && [data isKindOfClass:[NSData class]])
     keychainData = data;
   
-  else if ([data conformsToProtocol:@protocol(NSCoding)])
+  else if (data && [data conformsToProtocol:@protocol(NSCoding)])
     keychainData = [NSKeyedArchiver archivedDataWithRootObject:data];
-  else
+  else if (data)
     [NSException raise:NSInternalInconsistencyException
                 format:@"Class %@ does not conforms to NSCoding", NSStringFromClass([data class])];
   
