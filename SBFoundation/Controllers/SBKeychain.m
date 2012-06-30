@@ -45,7 +45,7 @@
 
 
 + (BOOL)setData:(id)data forKey:(NSString *)key {
-  if (!data || !key)
+  if (!key)
     return NO;
   
 	NSData *keychainData = nil;
@@ -65,7 +65,7 @@
                         [self serviceName], kSecAttrService, nil];
 	
   
-	if(!key) {
+	if(!data) {
 		return !SecItemDelete((__bridge CFDictionaryRef)spec);
 	}
   else if([self dataForKey:key class:[data class]]) {
