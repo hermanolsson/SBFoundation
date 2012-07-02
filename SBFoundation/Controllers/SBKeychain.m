@@ -45,17 +45,18 @@
 
 
 + (BOOL)setData:(id)data forKey:(NSString *)key {
-  if (!data || !key)
+  if (!key)
     return NO;
   
 	NSData *keychainData = nil;
   
-  if ([data isKindOfClass:[NSData class]])
+  
+  if (data && [data isKindOfClass:[NSData class]])
     keychainData = data;
   
-  else if ([data conformsToProtocol:@protocol(NSCoding)])
+  else if (data && [data conformsToProtocol:@protocol(NSCoding)])
     keychainData = [NSKeyedArchiver archivedDataWithRootObject:data];
-  else
+  else if (data)
     [NSException raise:NSInternalInconsistencyException
                 format:@"Class %@ does not conforms to NSCoding", NSStringFromClass([data class])];
   
@@ -65,7 +66,7 @@
                         [self serviceName], kSecAttrService, nil];
 	
   
-	if(!key) {
+	if(!data) {
 		return !SecItemDelete((__bridge CFDictionaryRef)spec);
 	}
   else if([self dataForKey:key class:[data class]]) {
