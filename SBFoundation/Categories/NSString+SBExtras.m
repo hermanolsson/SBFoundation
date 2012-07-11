@@ -40,7 +40,7 @@
     // Color
     CFAttributedStringSetAttribute(string, CFRangeMake(0, CFAttributedStringGetLength(string)), kCTForegroundColorFromContextAttributeName, kCFBooleanTrue);
  
-    return (__bridge NSAttributedString*)string;
+    return (__bridge_transfer NSAttributedString*)string;
 }
 
 @end
