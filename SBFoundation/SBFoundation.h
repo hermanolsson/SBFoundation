@@ -40,6 +40,7 @@ return thing
 // Views
 #import "SBTableViewCell.h"
 #import "SBBlockDrawView.h"
+#import "SBBlockDrawLayer.h"
 
 // External
 #import "MAKVONotificationCenter.h"
