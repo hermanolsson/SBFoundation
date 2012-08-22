@@ -26,4 +26,6 @@
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, assign) CGSize size;
 
+- (UIImage*)imageWithRect:(CGRect)frame transparentInsets:(UIEdgeInsets)insets;
+
 @end

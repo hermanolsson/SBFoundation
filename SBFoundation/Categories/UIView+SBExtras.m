@@ -130,4 +130,20 @@
 	[self setFrame:frame];
 }
 
+- (UIImage*)imageWithRect:(CGRect)frame transparentInsets:(UIEdgeInsets)insets {
+  CGSize imageSize = CGSizeMake(frame.size.width + insets.left + insets.right, frame.size.height + insets.top + insets.bottom);
+  
+	UIGraphicsBeginImageContextWithOptions(imageSize, NO, [UIScreen mainScreen].scale);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  CGContextClipToRect(context, (CGRect){{insets.left, insets.top}, frame.size});
+  CGContextTranslateCTM(context, -frame.origin.x + insets.left, -frame.origin.y + insets.top);
+  
+	[self.layer renderInContext:context];
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+  
+	return image;
+}
+
 @end

@@ -28,6 +28,7 @@ return thing
 #import "UIView+SBExtras.h"
 #import "NSString+SBExtras.h"
 #import "NSAttributedString+SBExtras.h"
+#import "CAAnimation+SBExtras.h"
 
 // Helpers
 #import "SBLog.h"
@@ -41,6 +42,7 @@ return thing
 #import "SBTableViewCell.h"
 #import "SBBlockDrawView.h"
 #import "SBBlockDrawLayer.h"
+#import "SBDoubleSidedLayer.h"
 
 // External
 #import "MAKVONotificationCenter.h"
