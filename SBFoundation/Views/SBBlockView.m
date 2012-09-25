@@ -5,14 +5,20 @@
 //  Copyright (c) 2012 Simon Blommegård. All rights reserved.
 //
 
-#import "SBBlockDrawView.h"
+#import "SBBlockView.h"
 
-@implementation SBBlockDrawView
+@implementation SBBlockView
 @synthesize drawRect = _drawRect;
+@synthesize layoutSubviewsBlock = _layoutSubviewsBlock;
 
 - (void)drawRect:(CGRect)rect {
     if (self.drawRect)
         self.drawRect(self, rect);
+}
+
+- (void)layoutSubviews {
+  if (self.layoutSubviewsBlock)
+    self.layoutSubviewsBlock(self);
 }
 
 @end

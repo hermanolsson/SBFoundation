@@ -40,7 +40,7 @@ return thing
 
 // Views
 #import "SBTableViewCell.h"
-#import "SBBlockDrawView.h"
+#import "SBBlockView.h"
 #import "SBBlockDrawLayer.h"
 #import "SBDoubleSidedLayer.h"
 

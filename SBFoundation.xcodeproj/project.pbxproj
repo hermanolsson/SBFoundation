@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		F429554B155B02950063B2E6 /* SBTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F4295549155B02950063B2E6 /* SBTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F429554C155B02950063B2E6 /* SBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F429554A155B02950063B2E6 /* SBTableViewCell.m */; };
-		F429555D155B05A90063B2E6 /* SBBlockDrawView.h in Headers */ = {isa = PBXBuildFile; fileRef = F429555B155B05A90063B2E6 /* SBBlockDrawView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F429555E155B05A90063B2E6 /* SBBlockDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = F429555C155B05A90063B2E6 /* SBBlockDrawView.m */; };
+		F429555D155B05A90063B2E6 /* SBBlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = F429555B155B05A90063B2E6 /* SBBlockView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F429555E155B05A90063B2E6 /* SBBlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = F429555C155B05A90063B2E6 /* SBBlockView.m */; };
 		F45257DB15E3767900B7FF37 /* SBDoubleSidedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = F45257D915E3767900B7FF37 /* SBDoubleSidedLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F45257DC15E3767900B7FF37 /* SBDoubleSidedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F45257DA15E3767900B7FF37 /* SBDoubleSidedLayer.m */; };
 		F462AA8715E2803300A1BA6A /* SBBlockDrawLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = F462AA8515E2803300A1BA6A /* SBBlockDrawLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -60,8 +60,8 @@
 		F41CFC9F151E7C9900B29FCE /* SBNetworkActivityIndicatorQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNetworkActivityIndicatorQueue.m; sourceTree = "<group>"; };
 		F4295549155B02950063B2E6 /* SBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTableViewCell.h; sourceTree = "<group>"; };
 		F429554A155B02950063B2E6 /* SBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTableViewCell.m; sourceTree = "<group>"; };
-		F429555B155B05A90063B2E6 /* SBBlockDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBlockDrawView.h; sourceTree = "<group>"; };
-		F429555C155B05A90063B2E6 /* SBBlockDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBlockDrawView.m; sourceTree = "<group>"; };
+		F429555B155B05A90063B2E6 /* SBBlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBlockView.h; sourceTree = "<group>"; };
+		F429555C155B05A90063B2E6 /* SBBlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBlockView.m; sourceTree = "<group>"; };
 		F4482FF51520FA76002549BB /* NSString+SBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBExtras.h"; sourceTree = "<group>"; };
 		F4482FF61520FA76002549BB /* NSString+SBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBExtras.m"; sourceTree = "<group>"; };
 		F45257D915E3767900B7FF37 /* SBDoubleSidedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDoubleSidedLayer.h; sourceTree = "<group>"; };
@@ -140,8 +140,8 @@
 			children = (
 				F4295549155B02950063B2E6 /* SBTableViewCell.h */,
 				F429554A155B02950063B2E6 /* SBTableViewCell.m */,
-				F429555B155B05A90063B2E6 /* SBBlockDrawView.h */,
-				F429555C155B05A90063B2E6 /* SBBlockDrawView.m */,
+				F429555B155B05A90063B2E6 /* SBBlockView.h */,
+				F429555C155B05A90063B2E6 /* SBBlockView.m */,
 				F462AA8515E2803300A1BA6A /* SBBlockDrawLayer.h */,
 				F462AA8615E2803300A1BA6A /* SBBlockDrawLayer.m */,
 				F45257D915E3767900B7FF37 /* SBDoubleSidedLayer.h */,
@@ -240,7 +240,7 @@
 				F429554B155B02950063B2E6 /* SBTableViewCell.h in Headers */,
 				F4B917201541AF450095DCF0 /* SBLog.h in Headers */,
 				F48F2A4B158F5597001B60DF /* SBKeychain.h in Headers */,
-				F429555D155B05A90063B2E6 /* SBBlockDrawView.h in Headers */,
+				F429555D155B05A90063B2E6 /* SBBlockView.h in Headers */,
 				F462AA8715E2803300A1BA6A /* SBBlockDrawLayer.h in Headers */,
 				F49ECF2E15E39E970044F6FD /* CAAnimation+SBExtras.h in Headers */,
 				F45257DB15E3767900B7FF37 /* SBDoubleSidedLayer.h in Headers */,
@@ -310,7 +310,7 @@
 				F4B917411541B2AE0095DCF0 /* NSAttributedString+SBExtras.m in Sources */,
 				F4840EF5155184300007EA8E /* MAKVONotificationCenter.m in Sources */,
 				F429554C155B02950063B2E6 /* SBTableViewCell.m in Sources */,
-				F429555E155B05A90063B2E6 /* SBBlockDrawView.m in Sources */,
+				F429555E155B05A90063B2E6 /* SBBlockView.m in Sources */,
 				F48F2A4C158F5597001B60DF /* SBKeychain.m in Sources */,
 				F462AA8815E2803300A1BA6A /* SBBlockDrawLayer.m in Sources */,
 				F45257DC15E3767900B7FF37 /* SBDoubleSidedLayer.m in Sources */,

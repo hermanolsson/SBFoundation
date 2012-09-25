@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SBBlockDrawView : UIView
+@interface SBBlockView : UIView
 @property (nonatomic, copy) void(^drawRect)(UIView *view, CGRect rect);
+@property (nonatomic, copy) void(^layoutSubviewsBlock)(UIView *view);
 @end
