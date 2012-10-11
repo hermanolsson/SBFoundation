@@ -31,7 +31,7 @@
 @end
 
 @interface SBTableViewCell ()
-@property (nonatomic, strong) SBTableViewCellDrawingView *cellContentView;
+@property (nonatomic, strong) UIView *cellContentView;
 @end
 
 @implementation SBTableViewCell
@@ -40,6 +40,8 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self setCellContentView:[[SBTableViewCellDrawingView alloc] initWithTarger:self selector:@selector(_drawContentRect:)]];
+        [self.cellContentView setFrame:self.contentView.frame];
+        [self.cellContentView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth)];
         [self.cellContentView setContentMode:UIViewContentModeLeft];
         [self.cellContentView setOpaque:NO];
         
@@ -50,12 +52,6 @@
         [self.backgroundView setOpaque:YES];
     }
     return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self.cellContentView setFrame:self.contentView.bounds];
-    [self setNeedsDisplay];
 }
 
 - (void)setNeedsDisplay {
