@@ -50,6 +50,10 @@
         [self setBackgroundView:[[SBTableViewCellDrawingView alloc] initWithTarger:self selector:@selector(_drawBackgroundRect:)]];
         [self.backgroundView setContentMode:UIViewContentModeLeft];
         [self.backgroundView setOpaque:YES];
+      
+        [self setSelectedBackgroundView:[[SBTableViewCellDrawingView alloc] initWithTarger:self selector:@selector(_drawSelectedBackgroundRect:)]];
+        [self.selectedBackgroundView setContentMode:UIViewContentModeLeft];
+        [self.selectedBackgroundView setOpaque:YES];
     }
     return self;
 }
@@ -57,7 +61,8 @@
 - (void)setNeedsDisplay {
 	[super setNeedsDisplay];
 	[self.cellContentView setNeedsDisplay];
-    [self.backgroundView setNeedsDisplay];
+  [self.backgroundView setNeedsDisplay];
+  [self.selectedBackgroundView setNeedsDisplay];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
@@ -80,6 +85,11 @@
 - (void)_drawBackgroundRect:(NSValue*)value {
 	[self drawBackgroundRect:[value CGRectValue]];
 }
+
+- (void)_drawSelectedBackgroundRect:(NSValue*)value {
+	[self drawSelectedBackgroundRect:[value CGRectValue]];
+}
+
 - (void)_drawContentRect:(NSValue*)value {
 	[self drawContentRect:[value CGRectValue]];
 }
@@ -87,6 +97,7 @@
 #pragma mark - Public
 
 - (void)drawBackgroundRect:(CGRect)rect {}
+- (void)drawSelectedBackgroundRect:(CGRect)rect {}
 - (void)drawContentRect:(CGRect)rect {}
 
 @end
