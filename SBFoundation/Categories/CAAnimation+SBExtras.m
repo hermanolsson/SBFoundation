@@ -7,7 +7,7 @@
 
 #import "CAAnimation+SBExtras.h"
 #import "NSObject+SBExtras.h"
-#import "SBFoundation.h"
+#import "SBDefines.h"
 
 SBDefineStaticVoid(kCAAnimationSBExtrasAnimationDelegateKey);
 
